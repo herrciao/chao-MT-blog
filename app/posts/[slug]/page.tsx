@@ -6,7 +6,13 @@ import { Layout } from '@/components/layout/Layout';
 import { PostCard } from '@/components/PostCard';
 import { formatDate, getLocalePath } from '@/lib/utils';
 import { getTranslation } from '@/lib/i18n';
-import { Giscus } from '@/components/Giscus';
+import { ShareButtons } from '@/components/ShareButtons';
+import dynamic from 'next/dynamic';
+
+const Giscus = dynamic(() => import('@/components/Giscus').then(mod => ({ default: mod.Giscus })), {
+  ssr: false,
+  loading: () => <div className="text-center py-4">載入留言系統中...</div>
+});
 
 interface PostPageProps {
   params: { slug: string };
@@ -150,25 +156,7 @@ export default function PostPage({ params }: PostPageProps) {
               {t.post.backToHome}
             </Link>
             
-            <div className="flex items-center space-x-4">
-              <span className="text-sm text-gray-500">{t.post.share}:</span>
-              <a
-                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(window.location.href)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-gray-600"
-              >
-                Twitter
-              </a>
-              <a
-                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-gray-600"
-              >
-                Facebook
-              </a>
-            </div>
+            <ShareButtons post={post} locale={locale} />
           </div>
         </footer>
       </article>
