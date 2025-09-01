@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { Header } from './Header';
 import { Footer } from './Footer';
-import { Locale } from '@/lib/i18n';
+import { Locale } from '@/types';
 
 interface LayoutProps {
   children: ReactNode;

@@ -4,7 +4,8 @@ import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { Button } from '@/components/ui/Button';
-import { getTranslation, Locale } from '@/lib/i18n';
+import { getTranslation } from '@/lib/i18n';
+import { Locale } from '@/types';
 import { getLocalePath } from '@/lib/utils';
 
 interface HeaderProps {

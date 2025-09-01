@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Layout } from '@/components/layout/Layout';
 import { PostCard } from '@/components/PostCard';
-import { searchPosts } from '@/lib/posts';
+// 移除直接導入，改用 API 路由
 import { getTranslation } from '@/lib/i18n';
 import { Post } from '@/types';
 import { Button } from '@/components/ui/Button';
@@ -26,12 +26,16 @@ export default function EnglishSearchPage() {
     setIsSearching(true);
     setHasSearched(true);
 
-    // 模擬搜尋延遲
-    setTimeout(() => {
-      const searchResults = searchPosts(searchQuery, locale);
+    try {
+      const response = await fetch(`/api/search?q=${encodeURIComponent(searchQuery)}&locale=${locale}`);
+      const searchResults = await response.json();
       setResults(searchResults);
+    } catch (error) {
+      console.error('Search failed:', error);
+      setResults([]);
+    } finally {
       setIsSearching(false);
-    }, 300);
+    }
   };
 
   useEffect(() => {

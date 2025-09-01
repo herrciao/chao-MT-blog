@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { getTranslation, Locale } from '@/lib/i18n';
+import { getTranslation } from '@/lib/i18n';
+import { Locale } from '@/types';
 import { getLocalePath } from '@/lib/utils';
 
 interface FooterProps {

@@ -17,48 +17,42 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 1,
-      alternates: {
-        languages: {
-          'zh-TW': baseUrl,
-          'en-US': `${baseUrl}/en`,
-        },
-      },
     },
     {
       url: `${baseUrl}/about`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
-      alternates: {
-        languages: {
-          'zh-TW': `${baseUrl}/about`,
-          'en-US': `${baseUrl}/en/about`,
-        },
-      },
+    },
+    {
+      url: `${baseUrl}/en/about`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
     },
     {
       url: `${baseUrl}/categories`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.8,
-      alternates: {
-        languages: {
-          'zh-TW': `${baseUrl}/categories`,
-          'en-US': `${baseUrl}/en/categories`,
-        },
-      },
+    },
+    {
+      url: `${baseUrl}/en/categories`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
     },
     {
       url: `${baseUrl}/search`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.6,
-      alternates: {
-        languages: {
-          'zh-TW': `${baseUrl}/search`,
-          'en-US': `${baseUrl}/en/search`,
-        },
-      },
+    },
+    {
+      url: `${baseUrl}/en/search`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.6,
     },
   ];
 
@@ -68,12 +62,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(post.date),
     changeFrequency: 'monthly' as const,
     priority: 0.9,
-    alternates: {
-      languages: {
-        'zh-TW': `${baseUrl}/posts/${post.slug}`,
-        'en-US': `${baseUrl}/en/posts/${post.slug}`,
-      },
-    },
   }));
 
   // 英文文章頁面
@@ -82,12 +70,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(post.date),
     changeFrequency: 'monthly' as const,
     priority: 0.9,
-    alternates: {
-      languages: {
-        'zh-TW': `${baseUrl}/posts/${post.slug}`,
-        'en-US': `${baseUrl}/en/posts/${post.slug}`,
-      },
-    },
   }));
 
   // 中文分類頁面
@@ -96,12 +78,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: 0.7,
-    alternates: {
-      languages: {
-        'zh-TW': `${baseUrl}/categories/${category.slug}`,
-        'en-US': `${baseUrl}/en/categories/${category.slug}`,
-      },
-    },
   }));
 
   // 英文分類頁面
@@ -110,12 +86,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: 0.7,
-    alternates: {
-      languages: {
-        'zh-TW': `${baseUrl}/categories/${category.slug}`,
-        'en-US': `${baseUrl}/en/categories/${category.slug}`,
-      },
-    },
   }));
 
   return [
@@ -126,4 +96,3 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...enCategoryPages,
   ];
 }
-

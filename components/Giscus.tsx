@@ -10,7 +10,7 @@ export function GiscusComments() {
   return (
     <Giscus
       id="comments"
-      repo={process.env.NEXT_PUBLIC_GISCUS_REPO || "your-username/your-repo"}
+      repo={(process.env.NEXT_PUBLIC_GISCUS_REPO || "your-username/your-repo") as `${string}/${string}`}
       repoId={process.env.NEXT_PUBLIC_GISCUS_REPO_ID || ""}
       category={process.env.NEXT_PUBLIC_GISCUS_CATEGORY || "Announcements"}
       categoryId={process.env.NEXT_PUBLIC_GISCUS_CATEGORY_ID || ""}
